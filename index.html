@@ -3,279 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Хас-Авто | Запчасти подвески в Хасавюрте</title>
+    <title>ХАС-АВТО | Нас знают. Нам доверяют.</title>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            line-height: 1.6;
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap');
+
+        :root {
+            --bg-dark: #0a0a0b;
+            --card-bg: #161618;
+            --primary-blue: #004a99;
+            --accent-red: #e60000;
+            --text-main: #f5f5f5;
+            --text-dim: #a0a0a0;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
-        header {
-            background-color: #1a1a1a;
-            border-bottom: 3px solid #b30000;
-            padding: 20px 0;
-            text-align: center;
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
-        h1, h2, h3 {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ffffff;
-        }
-
-        .brand-name {
-            color: #ff3333;
-            font-weight: bold;
-        }
-
-        /* Главный блок */
         .hero {
+            padding: 100px 20px 40px;
             text-align: center;
-            padding: 100px 20px;
-            background-image: 
-                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85)), 
-                url('hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
         }
 
-        /* Кнопки */
-        .social-buttons {
+        .hero-brand {
+            color: var(--accent-red);
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            margin: 0;
+            display: block;
+            line-height: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            line-height: 1.1;
+            margin: 15px 0 25px 0;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        /* Основные кнопки под заголовком */
+        .hero-actions {
             display: flex;
             justify-content: center;
             gap: 15px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
-            margin-top: 30px;
         }
 
-        .social-btn, .wa-master-btn {
-            display: inline-block;
-            padding: 12px 25px;
+        .btn-hero {
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 900;
             text-transform: uppercase;
-            font-size: 0.9em;
-            transition: transform 0.2s, opacity 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .social-btn:hover, .wa-master-btn:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
-        }
-
-        .whatsapp { background-color: #25D366; }
-        .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-        .max { background-color: #007bff; }
-
-        .section {
-            padding: 60px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        /* Список мастеров */
-        .master-item {
-            background: #1e1e1e;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 4px solid #ff3333;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .masters-list {
+            display: flex;
+            flex-direction: column;
             gap: 15px;
         }
 
-        .master-info {
+        .master-row {
+            background: var(--card-bg);
+            padding: 22px 35px;
+            border-radius: 60px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid transparent;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .master-row:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
         }
 
         .master-name {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
         }
 
-        .master-phone {
-            color: #aaa;
-            font-size: 0.9em;
+        .master-actions {
+            display: flex;
+            gap: 10px;
         }
 
-        /* Отдел заказов */
+        .btn-action {
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .wa-link { background: #25D366; }
+        .call-link { background: var(--primary-blue); }
+
         .order-box {
-            background: #004a99;
-            border: 2px solid #007bff;
-            padding: 30px;
-            text-align: center;
-            margin-top: 40px;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: 600;
+            position: relative;
+            margin: 80px 0;
+            border-radius: 40px;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .order-box h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
+        .order-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=2000&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
         }
 
-        .contacts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+        .order-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(0, 74, 153, 0.85), rgba(0, 0, 0, 0.96));
+            z-index: 2;
         }
 
-        .contact-card {
-            background: #1e1e1e;
-            padding: 30px;
-            border-left: 4px solid #b30000;
-        }
+        .order-content { position: relative; z-index: 3; text-align: center; padding: 40px; }
+        .order-content h3 { font-size: 2.8rem; margin: 0; font-weight: 900; text-transform: uppercase; }
+        .order-phone { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 900; margin: 20px 0; display: block; color: #fff; text-decoration: none; }
+        .btn-white { display: inline-block; background: white; color: var(--primary-blue); padding: 18px 45px; border-radius: 50px; text-decoration: none; font-weight: 900; text-transform: uppercase; }
 
-        .map-container {
-            width: 100%;
-            height: 400px;
-            background: #252525;
-            margin-top: 30px;
-            border: 1px solid #444;
-        }
+        .map-wrapper { border-radius: 40px; overflow: hidden; height: 450px; border: 2px solid var(--glass); margin-bottom: 80px; }
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-            background-color: #0e0e0e;
-        }
-
-        @media (max-width: 600px) {
-            .master-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        @media (max-width: 768px) {
+            .hero-brand, .hero h1 { font-size: 2.2rem; }
+            .master-row { flex-direction: column; gap: 15px; border-radius: 30px; text-align: center; padding: 25px; }
+            .master-actions { width: 100%; justify-content: center; }
+            .btn-hero { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <h1><span class="brand-name">ХАС</span>-АВТО</h1>
-    </div>
-</header>
-
-<section class="hero">
-    <div class="container">
-        <h2>Запчасти подвески на все авто</h2>
-        <p>Свяжитесь с нами в удобном для вас чате для подбора и заказа</p>
-        
-        <div class="social-buttons">
-            <a href="https://wa.me/79286718867" class="social-btn whatsapp" target="_blank">WhatsApp</a>
-            <a href="ССЫЛКА_НА_MAX" class="social-btn max" target="_blank">Max</a>
-            <a href="https://instagram.com/khasauto" class="social-btn instagram" target="_blank">Instagram</a>
-        </div>
-    </div>
-</section>
-
 <div class="container">
-    <section class="section">
-        <h2>О компании</h2>
-        <p><strong>Хас-Авто</strong> — ваш надежный партнер в выборе деталей ходовой части. Мы предлагаем широкий ассортимент: от бюджетных решений до запчастей премиум-класса. Профессиональный подбор, наличие на складе в Хасавюрте и гарантия качества.</p>
+    <section class="hero">
+        <span class="hero-brand">ХАС-АВТО</span>
+        <h1>Нас знают.<br>Нам доверяют.</h1>
+        <p style="font-weight: 800; color: var(--text-dim); font-size: 1.2rem; text-transform: uppercase; margin-bottom: 30px;">Запчасти подвески в Хасавюрте</p>
+        
+        <!-- Две основные кнопки -->
+        <div class="hero-actions">
+            <a href="tel:+79285110306" class="btn-hero call-link">Позвонить</a>
+            <a href="https://wa.me/79285110306" class="btn-hero wa-link" target="_blank">WhatsApp</a>
+        </div>
     </section>
 
-    <!-- РАЗДЕЛ: МАСТЕРА -->
-    <section class="section">
-        <h2>Мастера</h2>
+    <section>
+        <h2 class="section-title">Наши мастера</h2>
         <div class="masters-list">
-            
-            <div class="master-item">
-                <div class="master-info">
-                    <span class="master-name">Гасан</span>
-                    <span class="master-phone">+7 (989) 477-44-99</span>
+            <div class="master-row">
+                <span class="master-name">Гасан</span>
+                <div class="master-actions">
+                    <a href="tel:+79894774499" class="btn-action call-link">Позвонить</a>
+                    <a href="https://wa.me/79894774499" class="btn-action wa-link" target="_blank">WhatsApp</a>
                 </div>
-                <a href="https://wa.me/79894774499" class="wa-master-btn whatsapp" target="_blank">WhatsApp</a>
             </div>
-
-            <div class="master-item">
-                <div class="master-info">
-                    <span class="master-name">Мавлет</span>
-                    <span class="master-phone">+7 (928) 976-44-05</span>
+            <div class="master-row">
+                <span class="master-name">Мавлет</span>
+                <div class="master-actions">
+                    <a href="tel:+79289764405" class="btn-action call-link">Позвонить</a>
+                    <a href="https://wa.me/9289764405" class="btn-action wa-link" target="_blank">WhatsApp</a>
                 </div>
-                <a href="https://wa.me/9289764405" class="wa-master-btn whatsapp" target="_blank">WhatsApp</a>
             </div>
-
-            <div class="master-item">
-                <div class="master-info">
-                    <span class="master-name">Халид</span>
-                    <span class="master-phone">+7 (928) 533-99-70</span>
+            <div class="master-row">
+                <span class="master-name">Халид</span>
+                <div class="master-actions">
+                    <a href="tel:+79285339970" class="btn-action call-link">Позвонить</a>
+                    <a href="https://wa.me/9285339970" class="btn-action wa-link" target="_blank">WhatsApp</a>
                 </div>
-                <a href="https://wa.me/9285339970" class="wa-master-btn whatsapp" target="_blank">WhatsApp</a>
             </div>
-
-            <div class="master-item">
-                <div class="master-info">
-                    <span class="master-name">Гаирхан</span>
-                    <span class="master-phone">+7 (929) 040-61-01</span>
+            <div class="master-row">
+                <span class="master-name">Гаирхан</span>
+                <div class="master-actions">
+                    <a href="tel:+79290406101" class="btn-action call-link">Позвонить</a>
+                    <a href="https://wa.me/79290406101" class="btn-action wa-link" target="_blank">WhatsApp</a>
                 </div>
-                <a href="https://wa.me/79290406101" class="wa-master-btn whatsapp" target="_blank">WhatsApp</a>
             </div>
-
-            <div class="master-item">
-                <div class="master-info">
-                    <span class="master-name">Расул</span>
-                    <span class="master-phone">+7 (938) 200-10-02</span>
+            <div class="master-row">
+                <span class="master-name">Расул</span>
+                <div class="master-actions">
+                    <a href="tel:+79382001002" class="btn-action call-link">Позвонить</a>
+                    <a href="https://wa.me/79382001002" class="btn-action wa-link" target="_blank">WhatsApp</a>
                 </div>
-                <a href="https://wa.me/79382001002" class="wa-master-btn whatsapp" target="_blank">WhatsApp</a>
             </div>
-
         </div>
+    </section>
 
-        <!-- ОТДЕЛЬНОЕ ОКОШКО: ОТДЕЛ ЗАКАЗОВ -->
-        <div class="order-box">
+    <div class="order-box">
+        <div class="order-bg"></div>
+        <div class="order-overlay"></div>
+        <div class="order-content">
             <h3>Отдел заказов</h3>
-            <p>Заказы на любое авто</p>
-            <p style="font-size: 1.5em; color: #fff; font-weight: 800;">+7 (988) 279-52-42</p>
-            <a href="https://wa.me/79882795242" class="social-btn whatsapp" target="_blank" style="margin-top: 10px;">Написать в отдел заказов</a>
+            <p style="font-weight: 800;">Любые запчасти подвески под заказ</p>
+            <a href="tel:+79882795242" class="order-phone">+7 (988) 279-52-42</a>
+            <a href="https://wa.me/79882795242" class="btn-white" target="_blank">Написать нам</a>
         </div>
-    </section>
-
-    <section id="contacts" class="section">
-        <h2>Наши контакты</h2>
-        <div class="contacts-grid">
-            <div class="contact-card">
-                <h3>Адрес</h3>
-                <p>г. Хасавюрт, ул. Рыбникова 30</p>
-            </div>
-            <div class="contact-card">
-                <h3>Режим работы</h3>
-                <p>Пн-Сб: 09:00 — 18:00</p>
-                <p>Без выходных</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>Местоположение</h2>
-        <div class="map-container">
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A4b7548e582eeaa19456013f623814d302d3fffa2fe01e3b2579fae3793cab5f1&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
-        </div>
-    </section>
+    </div>
+    
+    <h2 class="section-title">Где мы находимся</h2>
+    <div class="map-wrapper">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A4b7548e582eeaa19456013f623814d302d3fffa2fe01e3b2579fae3793cab5f1&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
 </div>
 
-<footer>
-    <p>&copy; 2024 Хас-Авто. г. Хасавюрт.</p>
+<footer style="text-align: center; padding: 50px; color: var(--text-dim); border-top: 1px solid var(--glass); font-weight: 800;">
+    <p>&copy; 2026 ХАС-АВТО. г. Хасавюрт, ул. Рыбникова 30.</p>
 </footer>
 
 </body>
